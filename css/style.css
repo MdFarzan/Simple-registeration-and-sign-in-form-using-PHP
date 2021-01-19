@@ -92,6 +92,13 @@ input[type=submit]:hover{
     text-align:center;
 }
 
+h1{
+    border-bottom:2px solid grey;
+    margin-bottom:15px;
+    font-weight:normal;
+    padding:8px 0;
+}
+
 h2{
     border-bottom:2px solid grey;
     margin-bottom:15px;
@@ -103,6 +110,11 @@ h2{
     color:red;
 }
 
+.link{
+    display:inline-block;
+    color:black;
+    margin:8px 5px 3px;
+}
 .return-link{
     display:block;
     color:black;
