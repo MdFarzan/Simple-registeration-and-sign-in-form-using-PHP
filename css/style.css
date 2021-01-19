@@ -1,1 +1,118 @@
 /* styling here */
+:root{
+    --p-bg:#ececec;
+    --s-bg:white;
+    --btn-p-bg:dodgerBlue;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    background:var(--p-bg);
+}
+
+.form-container{
+    background:var(--s-bg);
+    
+}
+
+.field{
+    width:100%;
+    padding:8px;
+    font-size:19px;
+    margin:3px 0;
+    transition:0.3s;
+    border:1px solid grey;
+    border-radius:4px;
+    outline:none;
+}
+
+
+
+input[type=submit]{
+    font-size:20px;
+    padding:10px 20px;    
+    border:2px solid var(--btn-p-bg);
+    background:var(--btn-p-bg);
+    color:var(--s-bg);
+    border-radius:5px;
+    animation-name:anim1;
+    animation-duration:1s;
+    animation-play-state: paused;
+}
+
+
+
+input[type=submit]:active{
+    transform:translateY(10px);
+    transition:0.5s;
+    
+}
+
+input[type=submit]:hover{
+    background: rgb(48,130,212);
+}
+
+.field:focus{
+    border:1px solid dodgerBlue;
+    
+}
+
+.field-container{
+    padding:5px 0px 10px;
+}
+
+.text-center{
+    text-align:center;
+}
+
+h2{
+    border-bottom:2px solid grey;
+    margin-bottom:15px;
+    font-weight:normal;
+    padding:8px 0;
+}
+
+.error{
+    color:red;
+}
+
+.return-link{
+    color:black;
+    padding:5px 0;
+}
+
+@media screen and (min-width:0px){
+    
+}
+
+
+@media screen and (min-width:576px){
+    
+}
+
+@media screen and (min-width:768px){
+    
+}
+
+@media screen and (min-width:992px){
+    
+}
+
+@media screen and (min-width:1200px){
+    
+    .form-container{
+        padding:25px 20px;
+        width:400px;    
+    }
+}
