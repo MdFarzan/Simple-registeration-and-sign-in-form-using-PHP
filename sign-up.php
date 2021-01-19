@@ -58,7 +58,7 @@
                 <input type="submit"  value="Register" />
 
         </div>
-        <a href="#" class="return-link"><i class="fas fa-arrow-left"></i> Back to Sign in</a>   
+        <a href="index.php" class="return-link"><i class="fas fa-arrow-left"></i> Back to Sign in</a>   
         <!-- field-container end -->
                
     </div>

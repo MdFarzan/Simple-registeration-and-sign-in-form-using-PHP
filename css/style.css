@@ -40,8 +40,8 @@ body{
 
 
 input[type=submit]{
-    font-size:20px;
-    padding:10px 20px;    
+    font-size:18px;
+    padding:8px 15px;    
     border:2px solid var(--btn-p-bg);
     background:var(--btn-p-bg);
     color:var(--s-bg);
@@ -88,25 +88,38 @@ h2{
 }
 
 .return-link{
+    display:block;
     color:black;
-    padding:5px 0;
+    padding:5px 0 3px;
+    margin:8px 5px 3px;
 }
 
 @media screen and (min-width:0px){
-    
+    .form-container{
+        padding:10px;
+    }
+    h2{
+        font-size:22px;
+    }
 }
 
 
 @media screen and (min-width:576px){
-    
+    .form-container{
+        padding:15px;
+    }
 }
 
 @media screen and (min-width:768px){
-    
+    .form-container{
+        padding:20px;
+    }
 }
 
 @media screen and (min-width:992px){
-    
+    .form-container{
+        padding:20px;
+    }
 }
 
 @media screen and (min-width:1200px){
