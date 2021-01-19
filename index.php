@@ -56,7 +56,7 @@
         <a href="sign-up.php" class="link text-center">Not Registered? Sign up here</a>   
         </div>
         
-               
+        <a href="password-recovery.php" class="return-link" style="color:red;">Forgot Password</a>           
     </div>
     <!-- form container end -->
     
