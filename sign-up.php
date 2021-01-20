@@ -21,6 +21,7 @@
     <!-- form container start -->
     <div class="form-container">
         <h2>Register by filling this form</h2>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <!-- field-container start -->
         <div class="field-container">
             <label for="email">Email: 
@@ -58,8 +59,10 @@
                 <input type="submit"  value="Register" />
 
         </div>
-        <a href="index.php" class="return-link"><i class="fas fa-arrow-left"></i> Back to Sign in</a>   
         <!-- field-container end -->
+        </form>
+        <a href="index.php" class="return-link"><i class="fas fa-arrow-left"></i> Back to Sign in</a>   
+        
                
     </div>
     <!-- form container end -->
