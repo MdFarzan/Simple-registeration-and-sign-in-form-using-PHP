@@ -21,6 +21,7 @@
     <!-- form container start -->
     <div class="form-container">
         <h1>Sign in</h1>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <!-- field-container start -->
         <div class="field-container">
             <label for="email">Email: 
@@ -51,7 +52,7 @@
 
         </div>
         <!-- field-container end -->
-
+        </form>
         <div class="field-container text-center">
         <a href="sign-up.php" class="link text-center">Not Registered? Sign up here</a>   
         </div>
