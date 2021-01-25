@@ -1,5 +1,5 @@
 <?php 
-
+    session_start();
     /*signup functionality*/
     
     $emailErr = $mobileErr = $passwordErr = "";
@@ -28,12 +28,46 @@
             $passwordErr = "This field cannot be empty";
         else if(strlen($password)<8 || strlen($password)>15)
             $passwordErr = "Password must be between 8 to 15 characters.";
-            
-            
+        
+        
+
+        
+        
+            //inserting in database when no error
             if($emailErr == "" && $mobileErr == "" && $passwordErr == ""){
-                //every this is valid start here to insert in db
-                //continue from here
-                echo $email, $mobile, $password;
+                //inserting in database
+                try{
+                $db = new PDO("mysql:hostname=localhost; dbname=login_and_registration_form", "root", "rootroot");
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                
+                // checking is already exist
+                $num = $db->query("SELECT COUNT(*) FROM registration_details WHERE email = '$email' OR mobile_no = '$mobile'");
+                $num = $num->fetchColumn();
+                if($num==0){
+                $stmt = $db->prepare("INSERT INTO `registration_details`(email, mobile_no, password) VALUES(:email1,:mobile1,:password1)");
+                
+                $stmt->bindParam(':email1',$email1);
+                $stmt->bindParam(':mobile1',$mobile1);
+                $stmt->bindParam(':password1',$password1);
+
+                $email1 = $email;
+                $mobile1 = $mobile;
+                $password1 = password_hash($password, PASSWORD_DEFAULT);
+
+                $stmt->execute();
+                header("Location: index.php");
+                    $_SESSION['reg_status'] = 'success';
+                    
+                }
+                else
+                    echo "<script>alert('This email or mobile no. is already registered.');</script>";
+                }
+
+                catch(Exception $e){
+                    echo $e->getMessage();
+                }
+                
+                
             }
 
             else{

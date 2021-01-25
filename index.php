@@ -1,3 +1,11 @@
+<?php 
+    //if registration successfull then displaying an alert
+    session_start();
+    if(isset($_SESSION['reg_status']) && $_SESSION['reg_status']=='success'){
+        echo "<script>alert('Registration Successfull. Please sign.')</script>";
+        unset($_SESSION['reg_status']);
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
