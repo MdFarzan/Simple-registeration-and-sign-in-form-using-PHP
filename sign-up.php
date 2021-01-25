@@ -37,7 +37,8 @@
             if($emailErr == "" && $mobileErr == "" && $passwordErr == ""){
                 //inserting in database
                 try{
-                $db = new PDO("mysql:hostname=localhost; dbname=login_and_registration_form", "root", "rootroot");
+                    require_once('includes/config/dbconfig.php');
+                $db = new PDO("mysql:hostname=".DB_HOST."; dbname=".P_DB, DB_USER, DB_PASSKEY);
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
                 // checking is already exist
