@@ -23,12 +23,12 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container text-white">
 
     <div class="intro">
         <span class="intro-title d-block">Hello</span>
         <span class="big-heading d-block"><?php echo $_SESSION['email']; ?></span>
-    
+        <a href="logout.php" class="link">Log Out</a>
     </div>
 
 </div>
