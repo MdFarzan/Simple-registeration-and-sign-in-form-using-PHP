@@ -56,7 +56,7 @@
                 $password1 = password_hash($password, PASSWORD_DEFAULT);
 
                 $stmt->execute();
-                header("Location: index.php");
+                header("Location: sign-in.php");
                     $_SESSION['reg_status'] = 'success';
                     
                 }
@@ -153,7 +153,7 @@ function sanatize($data){
         </div>
         <!-- field-container end -->
         </form>
-        <a href="index.php" class="return-link"><i class="fas fa-arrow-left"></i> Back to Sign in</a>   
+        <a href="sign-in.php" class="return-link"><i class="fas fa-arrow-left"></i> Back to Sign in</a>   
         
                
     </div>
