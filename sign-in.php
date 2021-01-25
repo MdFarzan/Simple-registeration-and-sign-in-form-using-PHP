@@ -34,7 +34,7 @@
                     $_SESSION['USER_ID'] = $data['id'];
                     $_SESSION['EMAIL'] = $data['email'];
                     
-                    var_dump($_SESSION['USER_LOGGED_IN']);
+                    header("Location: index.php");
                 }
                 else{
                     echo "<script>alert('Entered password is not matched!');</script>";
