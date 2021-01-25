@@ -2,9 +2,62 @@
     //if registration successfull then displaying an alert
     session_start();
     if(isset($_SESSION['reg_status']) && $_SESSION['reg_status']=='success'){
-        echo "<script>alert('Registration Successfull. Please sign.')</script>";
+        echo "<script>alert('Registration Successfull. Please sign in.')</script>";
         unset($_SESSION['reg_status']);
     }
+
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        $email = sanatize($_POST['email']);
+        $passkey = sanatize($_POST['passkey']);
+
+        require_once('includes/config/dbconfig.php');
+        try{
+        $db = new PDO('mysql:hostname=' .DB_HOST. ';dbname=' .P_DB, DB_USER, DB_PASSKEY);
+        
+        
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            //checking is email exist
+            $user_count = $db->query("SELECT COUNT(*) FROM registration_details WHERE email = '$email'");
+            if($user_count->fetchColumn()==0){
+                echo "<script>alert('This email is not registered with us.')</script>";
+            }
+            
+            else{
+                // if email exist then getting complete profile
+                $profile_data = $db->query("SELECT * FROM registration_details WHERE email = '$email'");
+                $data = $profile_data->fetch(PDO::FETCH_ASSOC);
+                // checking password
+                if(password_verify($passkey,$data['password'])){
+                    //if password matched, then starting session
+                    $_SESSION['USER_LOGGED_IN'] = true;
+                    $_SESSION['USER_ID'] = $data['id'];
+                    $_SESSION['EMAIL'] = $data['email'];
+                    
+                    var_dump($_SESSION['USER_LOGGED_IN']);
+                }
+                else{
+                    echo "<script>alert('Entered password is not matched!');</script>";
+                }
+            
+            }
+        }
+
+        catch(Exception $e){
+            die($e->getMessage());
+        }
+        
+
+    }
+
+    //function for sanitize data
+    function sanatize($data){
+        $data = stripslashes($data);
+        $data = trim($data);
+        $data = htmlspecialchars($data);    
+        return $data;
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +82,7 @@
     <!-- form container start -->
     <div class="form-container">
         <h1>Sign in</h1>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
         <!-- field-container start -->
         <div class="field-container">
             <label for="email">Email: 
